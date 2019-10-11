@@ -58,6 +58,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        color: Colors.white,
         child: Column(
           children: <Widget>[
             GestureDetector(
@@ -115,7 +116,7 @@ class _HomePageState extends State<HomePage> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      FadeAnimation(1.3, Text(products[currentIndex][1], style: TextStyle(color: Colors.grey[800], fontSize: 40, fontWeight: FontWeight.bold),)),
+                      FadeAnimation(1.3, Text(products[currentIndex][1], style: TextStyle(color: Colors.grey[800], fontSize: 50, fontWeight: FontWeight.bold),)),
                       SizedBox(height: 15,),
                       Row(
                         children: <Widget>[
