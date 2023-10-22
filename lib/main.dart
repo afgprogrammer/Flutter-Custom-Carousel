@@ -1,4 +1,4 @@
-import 'package:day18_carousel/Animation/FadeAnimation.dart';
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(
@@ -69,9 +69,9 @@ class _HomePageState extends State<HomePage> {
                   _next();
                 }
               },
-              child: FadeAnimation(.8, Container(
+              child: FadeInUp(duration: Duration(milliseconds: 800), child: Container(
                 width: double.infinity,
-                height: 550,
+                height: 600,
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage(products[currentIndex][0]),
@@ -83,7 +83,7 @@ class _HomePageState extends State<HomePage> {
                     gradient: LinearGradient(
                       begin: Alignment.bottomRight,
                       colors: [
-                        Colors.grey[700].withOpacity(.9),
+                        Colors.grey.shade700.withOpacity(.9),
                         Colors.grey.withOpacity(.0),
                       ]
                     )
@@ -91,7 +91,7 @@ class _HomePageState extends State<HomePage> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
-                      FadeAnimation(1, Container(
+                      FadeInUp(duration: Duration(milliseconds: 1000), child: Container(
                         width: 90,
                         margin: EdgeInsets.only(bottom: 60),
                         child: Row(
@@ -106,7 +106,7 @@ class _HomePageState extends State<HomePage> {
             Expanded(
               child: Transform.translate(
                 offset: Offset(0, -40),
-                child: FadeAnimation(1, Container(
+                child: FadeInUp(duration: Duration(milliseconds: 1000), child: Container(
                   width: double.infinity,
                   padding: EdgeInsets.all(30),
                   decoration: BoxDecoration(
@@ -115,41 +115,42 @@ class _HomePageState extends State<HomePage> {
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      FadeAnimation(1.3, Text(products[currentIndex][1], style: TextStyle(color: Colors.grey[800], fontSize: 50, fontWeight: FontWeight.bold),)),
-                      SizedBox(height: 15,),
-                      Row(
-                        children: <Widget>[
-                          FadeAnimation(1.4, Text(products[currentIndex][2], style: TextStyle(color: Colors.yellow[700], fontWeight: FontWeight.bold, fontSize: 20),)),
-                          SizedBox(width: 10,),
-                          FadeAnimation(1.5, Row(
+                      Column(
+                        children: [
+                          FadeInUp(duration: Duration(milliseconds: 1300), child: Text(products[currentIndex][1], style: TextStyle(color: Colors.grey[800], fontSize: 40, fontWeight: FontWeight.bold),)),
+                          SizedBox(height: 15,),
+                          Row(
                             children: <Widget>[
-                              Icon(Icons.star, size: 18, color: Colors.yellow[700],),
-                              Icon(Icons.star, size: 18, color: Colors.yellow[700],),
-                              Icon(Icons.star, size: 18, color: Colors.yellow[700],),
-                              Icon(Icons.star, size: 18, color: Colors.yellow[700],),
-                              Icon(Icons.star_half, size: 18, color: Colors.yellow[700],),
-                              SizedBox(width: 5,),
-                              Text("(4.2/70 reviews)", style: TextStyle(color: Colors.grey, fontSize: 12),)
+                              FadeInUp(duration: Duration(milliseconds: 1400), child: Text(products[currentIndex][2], style: TextStyle(color: Colors.yellow[700], fontWeight: FontWeight.bold, fontSize: 20),)),
+                              SizedBox(width: 10,),
+                              FadeInUp(duration: Duration(milliseconds: 1500), child: Row(
+                                children: <Widget>[
+                                  Icon(Icons.star, size: 18, color: Colors.yellow[700],),
+                                  Icon(Icons.star, size: 18, color: Colors.yellow[700],),
+                                  Icon(Icons.star, size: 18, color: Colors.yellow[700],),
+                                  Icon(Icons.star, size: 18, color: Colors.yellow[700],),
+                                  Icon(Icons.star_half, size: 18, color: Colors.yellow[700],),
+                                  SizedBox(width: 5,),
+                                  Text("(4.2/70 reviews)", style: TextStyle(color: Colors.grey, fontSize: 12),)
+                                ],
+                              ))
                             ],
-                          ))
+                          ),
                         ],
                       ),
-                      Expanded(
-                        child: Align(
-                          alignment: Alignment.bottomCenter,
-                          child: FadeAnimation(1.7, Container(
-                            height: 45,
-                            decoration: BoxDecoration(
-                              color: Colors.yellow[700],
-                              borderRadius: BorderRadius.circular(8)
-                            ),
-                            child: Center(
-                              child: Text("ADD TO CART", style: TextStyle(fontWeight: FontWeight.bold),),
-                            ),
-                          )),
+                      FadeInUp(duration: Duration(milliseconds: 1700), child: MaterialButton(
+                        onPressed: () {},
+                        height: 45,
+                        color: Colors.yellow[700],
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8)
                         ),
-                      )
+                        child: Center(
+                          child: Text("ADD TO CART", style: TextStyle(fontWeight: FontWeight.bold),),
+                        ),
+                      )),
                     ],
                   ),
                 )),
